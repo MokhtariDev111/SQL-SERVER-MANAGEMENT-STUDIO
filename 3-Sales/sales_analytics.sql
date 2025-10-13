@@ -157,22 +157,6 @@ FROM gold.fact_sales f
 GROUP BY p.category
 ORDER BY total_revenue DESC;
  
-
-
-
-
--- What is the total profit generated for each category?
---profit  = sales - total cost 
-select
-    p.category,
-    sum(s.sales_amount) as total_sales,
-    sum(p.cost * s.quantity) as total_cost,
-    sum(s.sales_amount - (p.cost * s.quantity)) as total_profit
-from gold.fact_sales s
-join gold.dim_products p
-    on p.product_key = s.product_key
-group by p.category
-order by total_profit desc;
  
 
 
@@ -511,5 +495,6 @@ group by c.customer_key
 select COUNT(*) nmbr,cust_type from customer_seg group by cust_type
 
 --------------------------------------------------
+
 
 
